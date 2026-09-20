@@ -18,17 +18,7 @@ function App() {
               <li className="nav-item"><a className="nav-link" href="#portafolio">Portafolio</a></li>
               <li className="nav-item"><a className="nav-link" href="#contacto">Contacto</a></li>
               {/* BOTÓN DESTACADO EN EL MENÚ */}
-              <li className="nav-item ms-lg-3 mt-2 mt-lg-0">
-                <a 
-                  href="https://citas.rolicode.com.mx" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="btn btn-sm btn-primary fw-bold"
-                  style={{ borderRadius: '20px' }}
-                >
-                  📅 Ver Agenda Demo
-                </a>
-              </li>
+              
             </ul>
           </div>
         </div>
