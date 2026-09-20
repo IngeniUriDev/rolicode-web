@@ -1,4 +1,5 @@
 import './App.css'
+import { FaLaptopCode, FaMobileAlt, FaServer, FaCalendarCheck, FaBoxOpen, FaChartLine, FaExternalLinkAlt } from 'react-icons/fa';
 
 function App() {
   return (
@@ -11,11 +12,23 @@ function App() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto">
+            <ul className="navbar-nav ms-auto align-items-center">
               <li className="nav-item"><a className="nav-link" href="#inicio">Inicio</a></li>
               <li className="nav-item"><a className="nav-link" href="#servicios">Servicios</a></li>
               <li className="nav-item"><a className="nav-link" href="#portafolio">Portafolio</a></li>
               <li className="nav-item"><a className="nav-link" href="#contacto">Contacto</a></li>
+              {/* BOTÓN DESTACADO EN EL MENÚ */}
+              <li className="nav-item ms-lg-3 mt-2 mt-lg-0">
+                <a 
+                  href="https://citas.rolicode.com.mx" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="btn btn-sm btn-primary fw-bold"
+                  style={{ borderRadius: '20px' }}
+                >
+                  📅 Ver Agenda Demo
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -38,7 +51,7 @@ function App() {
             <div className="col-md-4 mb-4">
               <div className="card h-100 shadow-sm border-0">
                 <div className="card-body">
-                  <h3 className="h5 card-title text-primary">💻 Desarrollo Web</h3>
+                  <h3 className="h5 card-title text-primary"><FaLaptopCode size={30} className="text-primary mb-3" /> Desarrollo Web</h3>
                   <p className="card-text">Sitios rápidos y modernos con React, HTML y Bootstrap. Adaptables a cualquier dispositivo.</p>
                 </div>
               </div>
@@ -46,7 +59,7 @@ function App() {
             <div className="col-md-4 mb-4">
               <div className="card h-100 shadow-sm border-0">
                 <div className="card-body">
-                  <h3 className="h5 card-title text-primary">📱 Apps Móviles</h3>
+                  <h3 className="h5 card-title text-primary"><FaMobileAlt size={30} className="text-primary mb-3" /> Apps Móviles</h3>
                   <p className="card-text">Aplicaciones nativas y multiplataforma enfocadas en la experiencia del usuario.</p>
                 </div>
               </div>
@@ -54,7 +67,7 @@ function App() {
             <div className="col-md-4 mb-4">
               <div className="card h-100 shadow-sm border-0">
                 <div className="card-body">
-                  <h3 className="h5 card-title text-primary">⚙️ Backend & APIs</h3>
+                  <h3 className="h5 card-title text-primary"><FaServer size={30} className="text-primary mb-3" /> Backend & APIs</h3>
                   <p className="card-text">Sistemas robustos y escalables con Node.js, Spring Boot y bases de datos SQL.</p>
                 </div>
               </div>
@@ -63,21 +76,33 @@ function App() {
         </div>
       </section>
 
-      {/* --- PORTAFOLIO (Tus 3 proyectos futuros) --- */}
+      {/* --- PORTAFOLIO --- */}
       <section id="portafolio" className="py-5 bg-light">
         <div className="container text-center">
-          <h2 className="mb-5 fw-bold">Proyectos en Desarrollo</h2>
-          <p className="mb-4 text-muted">Estamos construyendo estas soluciones para demostrar el valor que podemos llevar a tu empresa.</p>
+          <h2 className="mb-5 fw-bold">Nuestros Proyectos</h2>
+          <p className="mb-4 text-muted">Soluciones reales desarrolladas para demostrar el valor que podemos llevar a tu empresa.</p>
           <div className="row">
+            
+            {/* PROYECTO 1: ¡AHORA ESTÁ EN LÍNEA! */}
             <div className="col-md-4 mb-4">
-              <div className="card h-100 border-primary">
+              <div className="card h-100 border-success shadow-sm">
                 <div className="card-body">
-                  <span className="badge bg-warning text-dark mb-2">En Progreso</span>
+                  <span className="badge bg-success mb-2">✅ En Línea</span>
                   <h3 className="h5 card-title">App de Gestión de Citas</h3>
-                  <p className="card-text small">React + Node.js + PostgreSQL. Un sistema para que negocios agenden clientes sin conflictos.</p>
+                  <p className="card-text small">React + Node.js + PostgreSQL. Sistema completo con modo oscuro, CRUD y panel administrativo para negocios.</p>
+                  <a 
+                    href="https://citas.rolicode.com.mx" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="btn btn-outline-success btn-sm w-100 mt-2 d-flex align-items-center justify-content-center gap-2"
+                  >
+                    Probar Demo en Vivo <FaExternalLinkAlt size={12} />
+                  </a>
                 </div>
               </div>
             </div>
+
+            {/* PROYECTO 2 */}
             <div className="col-md-4 mb-4">
               <div className="card h-100 border-primary">
                 <div className="card-body">
@@ -87,6 +112,8 @@ function App() {
                 </div>
               </div>
             </div>
+
+            {/* PROYECTO 3 */}
             <div className="col-md-4 mb-4">
               <div className="card h-100 border-primary">
                 <div className="card-body">
@@ -94,6 +121,44 @@ function App() {
                   <h3 className="h5 card-title">Tracker de Hábitos</h3>
                   <p className="card-text small">Kotlin + Firebase. App móvil nativa para ayudar a los usuarios a construir rutinas diarias.</p>
                 </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* --- POR QUÉ ELEGIRNOS --- */}
+      <section className="py-5">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-md-6">
+              <h2 className="fw-bold mb-4">¿Por qué elegir RoliCode?</h2>
+              <ul className="list-unstyled">
+                <li className="mb-3">
+                  <span className="text-primary me-2 fw-bold">✓</span> 
+                  <strong>Soluciones a medida:</strong> Personalizadas que se adaptan a tus necesidades.
+                </li>
+                <li className="mb-3">
+                  <span className="text-primary me-2 fw-bold">✓</span> 
+                  <strong>Tecnología moderna:</strong> React, Node.js, PostgreSQL, Java, Kotlin.
+                </li>
+                <li className="mb-3">
+                  <span className="text-primary me-2 fw-bold">✓</span> 
+                  <strong>Soporte continuo:</strong> Te acompañamos después del lanzamiento.
+                </li>
+                <li className="mb-3">
+                  <span className="text-primary me-2 fw-bold">✓</span> 
+                  <strong>Precios competitivos:</strong> Calidad profesional sin costos excesivos.
+                </li>
+              </ul>
+            </div>
+            <div className="col-md-6 text-center">
+              <div className="bg-light p-5 rounded shadow-sm">
+                <h3 className="text-primary fw-bold">+20</h3>
+                <p className="text-muted">Proyectos completados</p>
+                <h3 className="text-primary fw-bold">100%</h3>
+                <p className="text-muted">Clientes satisfechos</p>
               </div>
             </div>
           </div>
@@ -105,12 +170,12 @@ function App() {
         <div className="container">
           <h2 className="mb-4">¿Listo para iniciar tu proyecto?</h2>
           <p className="mb-4">Hablemos sobre cómo RoliCode puede ayudarte.</p>
-          <a href="mailto:contacto@rolicode.com.mx" className="btn btn-primary btn-lg">urielr.g.57@gmail.com</a>
+          <a href="mailto:urielr.g.57@gmail.com" className="btn btn-primary btn-lg">urielr.g.57@gmail.com</a>
           <p className="mt-4 small text-muted">© 2026 RoliCode. Todos los derechos reservados.</p>
         </div>
       </section>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
