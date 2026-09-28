@@ -1,4 +1,5 @@
-import { FaCode, FaGithub, FaEnvelope, FaHeart, FaWhatsapp } from 'react-icons/fa';
+import { FaGithub, FaEnvelope, FaHeart, FaWhatsapp } from 'react-icons/fa';
+import logoImg from '../assets/RoliCodeLogo2 (1).png';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -9,9 +10,12 @@ export default function Footer() {
         <div className="row g-4 align-items-center justify-content-between">
           <div className="col-md-6 text-center text-md-start">
             <a className="rc-brand-logo mb-2 d-inline-flex" href="#inicio">
-              <span className="p-2 rounded-3 bg-dark border border-secondary border-opacity-25 d-inline-flex align-items-center justify-content-center text-primary">
-                <FaCode size={18} />
-              </span>
+              <img
+                src={logoImg}
+                alt="RoliCode Logo"
+                className="rounded-2"
+                style={{ height: '34px', width: 'auto', objectFit: 'contain' }}
+              />
               <span>Roli<span className="rc-brand-code">Code</span></span>
             </a>
             <p className="small text-muted mb-0" style={{ maxWidth: '420px' }}>

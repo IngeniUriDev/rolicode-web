@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { FaBars, FaTimes, FaCode, FaRocket } from 'react-icons/fa';
+import { FaBars, FaTimes, FaRocket } from 'react-icons/fa';
+import logoImg from '../assets/RoliCodeLogo2 (1).png';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,9 +21,12 @@ export default function Navbar() {
       <div className="container">
         {/* Brand */}
         <a className="rc-brand-logo" href="#inicio" onClick={closeMenu}>
-          <span className="p-2 rounded-3 bg-dark border border-secondary border-opacity-25 d-inline-flex align-items-center justify-content-center text-primary">
-            <FaCode size={20} />
-          </span>
+          <img
+            src={logoImg}
+            alt="RoliCode Logo"
+            className="rounded-2 shadow-sm"
+            style={{ height: '38px', width: 'auto', objectFit: 'contain' }}
+          />
           <span>Roli<span className="rc-brand-code">Code</span></span>
         </a>
 

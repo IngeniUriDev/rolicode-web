@@ -241,7 +241,7 @@ export default function InteractiveDemos() {
                       <input
                         type="text"
                         className="form-control rc-input"
-                        placeholder="Ej. Uriel Ruiz / Mi Empresa"
+                        placeholder="Ej. Uriel Rojas / Mi Empresa"
                         value={clientName}
                         onChange={(e) => setClientName(e.target.value)}
                         required
