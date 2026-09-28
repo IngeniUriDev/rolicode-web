@@ -92,12 +92,12 @@ export default function AboutSection() {
               {/* Social links */}
               <div className="d-flex flex-wrap gap-2 pt-3 border-top border-secondary border-opacity-25">
                 <a
-                  href="https://github.com/urielrg"
+                  href="https://github.com/IngeniUriDev"
                   target="_blank"
                   rel="noreferrer"
                   className="btn btn-outline-secondary btn-sm text-white border-opacity-50 d-flex align-items-center gap-2"
                 >
-                  <FaGithub size={15} /> GitHub (@urielrg)
+                  <FaGithub size={15} /> GitHub (@IngeniUriDev)
                 </a>
                 <a
                   href="mailto:urielr.g.57@gmail.com"

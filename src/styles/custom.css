@@ -542,3 +542,33 @@ code, pre, .rc-mono {
 ::-webkit-scrollbar-thumb:hover {
   background: #475569;
 }
+
+/* ==========================================================================
+   Tech Grid Pattern & Elevated Aesthetics
+   ========================================================================== */
+.rc-tech-grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(99, 102, 241, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.08) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, black 30%, transparent 100%);
+}
+
+.transition-smooth {
+  transition: var(--rc-transition-smooth);
+}
+
+.hover-border-info:hover {
+  border-color: var(--rc-accent-cyan) !important;
+  background-color: rgba(6, 182, 212, 0.06) !important;
+  transform: translateY(-2px);
+}
+
+.shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}

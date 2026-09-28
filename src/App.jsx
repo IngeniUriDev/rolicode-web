@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -9,69 +9,12 @@ import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import ProjectDetailModal from './components/ProjectDetailModal';
-import ProjectGeneratorModal from './components/ProjectGeneratorModal';
 import { INITIAL_PROJECTS } from './data/projectsData';
 
 function App() {
-  const [projects, setProjects] = useState(() => {
-    try {
-      const saved = localStorage.getItem('rolicode_projects');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          const hasKartodromo = parsed.some(p => p.id === 'kartodromo-sabaneta');
-          if (!hasKartodromo) {
-            const kartodromo = INITIAL_PROJECTS.find(p => p.id === 'kartodromo-sabaneta');
-            if (kartodromo) {
-              const updated = [kartodromo, ...parsed];
-              localStorage.setItem('rolicode_projects', JSON.stringify(updated));
-              return updated;
-            }
-          }
-          return parsed;
-        }
-      }
-    } catch {
-      // Fallback
-    }
-    return INITIAL_PROJECTS;
-  });
-
-  const [hasCustomProjects, setHasCustomProjects] = useState(() => {
-    try {
-      return !!localStorage.getItem('rolicode_projects');
-    } catch {
-      return false;
-    }
-  });
-
+  const projects = INITIAL_PROJECTS;
   const [selectedProjectForDetail, setSelectedProjectForDetail] = useState(null);
-  const [isGeneratorModalOpen, setIsGeneratorModalOpen] = useState(false);
   const [selectedServiceCategory, setSelectedServiceCategory] = useState(null);
-
-  // Sync with local storage
-  const handleAddProject = (newProject) => {
-    setProjects((prev) => {
-      const updated = [newProject, ...prev];
-      try {
-        localStorage.setItem('rolicode_projects', JSON.stringify(updated));
-      } catch {
-        // Ignore storage error
-      }
-      return updated;
-    });
-    setHasCustomProjects(true);
-  };
-
-  const handleResetProjects = () => {
-    try {
-      localStorage.removeItem('rolicode_projects');
-    } catch {
-      // Ignore
-    }
-    setProjects(INITIAL_PROJECTS);
-    setHasCustomProjects(false);
-  };
 
   const handleSelectServiceForQuote = (serviceId) => {
     setSelectedServiceCategory(serviceId);
@@ -94,9 +37,6 @@ function App() {
         <ProjectsSection
           projects={projects}
           onOpenProjectDetail={(proj) => setSelectedProjectForDetail(proj)}
-          onOpenGeneratorModal={() => setIsGeneratorModalOpen(true)}
-          onResetProjects={handleResetProjects}
-          hasCustomProjects={hasCustomProjects}
         />
 
         {/* Interactive Live Demos Section */}
@@ -123,13 +63,7 @@ function App() {
         />
       )}
 
-      {/* Project Generator Modal */}
-      {isGeneratorModalOpen && (
-        <ProjectGeneratorModal
-          onClose={() => setIsGeneratorModalOpen(false)}
-          onAddProject={handleAddProject}
-        />
-      )}
+
     </div>
   );
 }

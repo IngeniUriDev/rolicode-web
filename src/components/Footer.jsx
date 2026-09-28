@@ -34,11 +34,11 @@ export default function Footer() {
 
             <div className="d-flex align-items-center justify-content-center justify-content-md-end gap-3 text-secondary">
               <a
-                href="https://github.com/urielrg"
+                href="https://github.com/IngeniUriDev"
                 target="_blank"
                 rel="noreferrer"
                 className="text-secondary hover-light"
-                title="GitHub"
+                title="GitHub (@IngeniUriDev)"
               >
                 <FaGithub size={18} />
               </a>

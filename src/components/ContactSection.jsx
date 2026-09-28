@@ -66,7 +66,7 @@ export default function ContactSection() {
               <div>
                 <h4 className="h5 text-white fw-bold mb-3">Canales Directos</h4>
                 <p className="text-light small mb-4" style={{ fontSize: '0.94rem' }}>
-                  Respuesta en menos de 24 horas hábiles. Evaluamos requerimientos técnicos y alcance de forma transparente.
+                  Respuesta en menos de 24 horas. Evaluamos requerimientos técnicos y alcance de forma transparente.
                 </p>
 
                 {/* Email Box */}

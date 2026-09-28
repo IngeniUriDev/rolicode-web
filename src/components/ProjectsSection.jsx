@@ -3,10 +3,7 @@ import { FaExternalLinkAlt, FaGithub, FaEye, FaPlus, FaUndo, FaSearch } from 're
 
 export default function ProjectsSection({
   projects,
-  onOpenProjectDetail,
-  onOpenGeneratorModal,
-  onResetProjects,
-  hasCustomProjects
+  onOpenProjectDetail
 }) {
   const [filter, setFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -45,25 +42,10 @@ export default function ProjectsSection({
             </p>
           </div>
 
-          {/* Action buttons: Generar Proyecto & Reset */}
           <div className="d-flex align-items-center gap-2">
-            {hasCustomProjects && (
-              <button
-                type="button"
-                onClick={onResetProjects}
-                className="btn btn-outline-secondary btn-sm py-2 px-3 text-white border-opacity-50 d-flex align-items-center gap-2"
-                title="Restaurar proyectos base"
-              >
-                <FaUndo size={12} /> Restaurar Base
-              </button>
-            )}
-            <button
-              type="button"
-              onClick={onOpenGeneratorModal}
-              className="rc-btn-primary py-2 px-3"
-            >
-              <FaPlus size={13} /> Generar / Agregar Proyecto
-            </button>
+            <span className="badge bg-secondary bg-opacity-30 text-info border border-secondary border-opacity-40 px-3 py-2 rounded-pill font-monospace small">
+              {projects.length} Soluciones en Catálogo
+            </span>
           </div>
         </div>
 

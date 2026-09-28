@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import InventoryDemo from './InventoryDemo';
 import {
+  FaBoxes,
   FaCalendarCheck,
   FaTerminal,
   FaPlay,
@@ -185,7 +187,7 @@ export default function InteractiveDemos() {
             Interactúa con Funcionalidades de Muestra
           </h2>
           <p className="lead mx-auto" style={{ maxWidth: '680px' }}>
-            Prueba directamente en esta página dos de los módulos esenciales que implementamos: sistema de reservas en tiempo real y arquitectura de APIs REST.
+            Prueba directamente en esta página tres de los módulos esenciales que implementamos: sistema de reservas en tiempo real, consola de APIs REST y gestor de inventario con PostgreSQL/Supabase.
           </p>
 
           {/* Tab Switcher */}
@@ -210,7 +212,18 @@ export default function InteractiveDemos() {
               }`}
               onClick={() => setActiveTab('api')}
             >
-              <FaTerminal className="me-2 text-warning" /> 2. Consola de APIs & Backend
+              <FaTerminal className="me-2 text-warning" /> 2. Consola de APIs
+            </button>
+            <button
+              type="button"
+              className={`btn btn-sm px-4 rounded-pill fw-semibold ${
+                activeTab === 'inventario'
+                  ? 'btn-primary text-white shadow'
+                  : 'text-light border-0 bg-transparent'
+              }`}
+              onClick={() => setActiveTab('inventario')}
+            >
+              <FaBoxes className="me-2 text-success" /> 3. Almacén & Stock en Vivo
             </button>
           </div>
         </div>
@@ -631,6 +644,9 @@ export default function InteractiveDemos() {
             </div>
           </div>
         )}
+
+        {/* --- DEMO 3: Gestor de Inventario & Stock en Vivo --- */}
+        {activeTab === 'inventario' && <InventoryDemo />}
       </div>
     </section>
   );
