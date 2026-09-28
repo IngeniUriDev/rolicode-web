@@ -1,0 +1,544 @@
+/* ==========================================================================
+   RoliCode - Design System & Modern Aesthetics
+   High Contrast & Authentic Engineering Focus
+   ========================================================================== */
+
+:root {
+  /* Brand Color Palette - Deep Navy / Slate with Vibrant Accents */
+  --rc-bg-dark: #070b12;
+  --rc-bg-surface: #0f172a;
+  --rc-bg-card: #111a2e;
+  --rc-bg-card-hover: #17233d;
+  --rc-bg-elevated: #1e293b;
+  --rc-border-subtle: #1e293b;
+  --rc-border-medium: #334155;
+  --rc-border-hover: #4f46e5;
+
+  --rc-primary: #6366f1;
+  --rc-primary-hover: #4f46e5;
+  --rc-secondary: #8b5cf6;
+  --rc-accent-cyan: #06b6d4;
+  --rc-accent-emerald: #10b981;
+  --rc-accent-amber: #f59e0b;
+  --rc-accent-rose: #f43f5e;
+
+  /* High Contrast Text Palette */
+  --rc-text-main: #f8fafc;       /* Crisp White */
+  --rc-text-body: #cbd5e1;       /* Silver Slate 300 - High legibility */
+  --rc-text-muted: #94a3b8;      /* Clean Slate 400 - Readable secondary */
+  --rc-text-subtle: #64748b;     /* Slate 500 - Borders & placeholders */
+
+  --rc-font-heading: 'Outfit', sans-serif;
+  --rc-font-body: 'Plus Jakarta Sans', sans-serif;
+  --rc-font-mono: 'JetBrains Mono', monospace;
+
+  --rc-glow-primary: 0 0 25px rgba(99, 102, 241, 0.3);
+  --rc-glow-cyan: 0 0 25px rgba(6, 182, 212, 0.3);
+  --rc-glow-emerald: 0 0 20px rgba(16, 185, 129, 0.25);
+
+  --rc-transition-smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   Global Reset & High-Contrast Overrides for Bootstrap Defaults
+   ========================================================================== */
+body {
+  font-family: var(--rc-font-body);
+  background-color: var(--rc-bg-dark);
+  color: var(--rc-text-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, .rc-font-heading {
+  font-family: var(--rc-font-heading);
+  letter-spacing: -0.02em;
+  color: var(--rc-text-main);
+}
+
+/* Crucial: Override Bootstrap's muddy gray text-muted and text-secondary */
+.text-muted {
+  color: var(--rc-text-muted) !important;
+}
+
+.text-secondary {
+  color: var(--rc-text-body) !important;
+}
+
+.text-white-50 {
+  color: #cbd5e1 !important;
+}
+
+p.lead {
+  color: var(--rc-text-body) !important;
+}
+
+code, pre, .rc-mono {
+  font-family: var(--rc-font-mono);
+}
+
+/* Background Atmosphere Glows (Subtle, not muddy) */
+.rc-ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.rc-glow-top-right {
+  top: -120px;
+  right: -100px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.14), transparent 70%);
+}
+
+.rc-glow-mid-left {
+  top: 35%;
+  left: -160px;
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.12), transparent 70%);
+}
+
+/* ==========================================================================
+   Navbar
+   ========================================================================== */
+.rc-navbar {
+  background: rgba(7, 11, 18, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--rc-border-medium);
+  transition: var(--rc-transition-smooth);
+  z-index: 1050;
+}
+
+.rc-brand-logo {
+  font-family: var(--rc-font-heading);
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rc-brand-code {
+  background: linear-gradient(135deg, var(--rc-primary) 0%, var(--rc-accent-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rc-nav-link {
+  color: var(--rc-text-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: var(--rc-transition-smooth);
+}
+
+.rc-nav-link:hover, .rc-nav-link.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ==========================================================================
+   Buttons & Badges
+   ========================================================================== */
+.rc-btn-primary {
+  background: linear-gradient(135deg, var(--rc-primary) 0%, var(--rc-secondary) 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-weight: 600;
+  padding: 0.65rem 1.4rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+  transition: var(--rc-transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.rc-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+  color: #ffffff;
+}
+
+.rc-btn-secondary {
+  background: #1e293b;
+  color: #f1f5f9;
+  border: 1px solid var(--rc-border-medium);
+  font-weight: 600;
+  padding: 0.65rem 1.4rem;
+  border-radius: 10px;
+  transition: var(--rc-transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.rc-btn-secondary:hover {
+  background: #334155;
+  border-color: #475569;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.rc-btn-outline {
+  background: transparent;
+  color: #818cf8;
+  border: 1px solid #6366f1;
+  font-weight: 600;
+  padding: 0.5rem 1.1rem;
+  border-radius: 8px;
+  transition: var(--rc-transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  text-decoration: none;
+}
+
+.rc-btn-outline:hover {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: #818cf8;
+  color: #ffffff;
+}
+
+/* Status Pulsing Dot */
+.rc-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #34d399;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+}
+
+.rc-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: rc-pulse 2s infinite;
+}
+
+@keyframes rc-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+/* ==========================================================================
+   Clean Solid Dark Cards (High Contrast, No Murkiness)
+   ========================================================================== */
+.rc-card {
+  background: var(--rc-bg-card);
+  border: 1px solid var(--rc-border-medium);
+  border-radius: 16px;
+  padding: 1.75rem;
+  transition: var(--rc-transition-smooth);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.rc-card:hover {
+  background: var(--rc-bg-card-hover);
+  border-color: #4f46e5;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+.rc-card-glow-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--rc-primary), var(--rc-accent-cyan), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.rc-card-glow-border:hover::before {
+  opacity: 1;
+}
+
+/* Solid Developer Inner Panels */
+.rc-inner-panel {
+  background: #0b1120;
+  border: 1px solid var(--rc-border-medium);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+}
+
+.rc-stat-box {
+  background: #0b1120;
+  border: 1px solid var(--rc-border-medium);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  text-align: center;
+}
+
+.rc-stat-num {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  font-family: var(--rc-font-heading);
+}
+
+/* Category Filter Tabs */
+.rc-filter-pill {
+  background: #1e293b;
+  border: 1px solid var(--rc-border-medium);
+  color: var(--rc-text-body);
+  border-radius: 9999px;
+  padding: 0.45rem 1.15rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--rc-transition-smooth);
+}
+
+.rc-filter-pill:hover {
+  background: #334155;
+  color: #ffffff;
+  border-color: #64748b;
+}
+
+.rc-filter-pill.active {
+  background: linear-gradient(135deg, var(--rc-primary), var(--rc-secondary));
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 2px 10px rgba(99, 102, 241, 0.4);
+}
+
+/* Tech Badges */
+.rc-tech-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+}
+
+/* Hero Section */
+.rc-hero-section {
+  position: relative;
+  padding: 5rem 0 4rem;
+  overflow: hidden;
+}
+
+.rc-hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+.rc-gradient-text {
+  background: linear-gradient(135deg, #c7d2fe 0%, #818cf8 50%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* IDE / Code Window in Hero */
+.rc-code-window {
+  background: #0b1120;
+  border: 1px solid #334155;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.55);
+}
+
+.rc-code-window-header {
+  background: #111c33;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rc-code-window-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.rc-code-window-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.rc-code-window-body {
+  padding: 1.25rem;
+  font-family: var(--rc-font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+  overflow-x: auto;
+}
+
+/* API Playground Terminal Console */
+.rc-terminal-box {
+  background: #090e17;
+  border: 1px solid #334155;
+  border-radius: 14px;
+  overflow: hidden;
+  font-family: var(--rc-font-mono);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+}
+
+.rc-terminal-header {
+  background: #111a2e;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #1e293b;
+}
+
+.rc-terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.rc-terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.rc-terminal-body {
+  padding: 1.5rem;
+  font-size: 0.88rem;
+  color: #e2e8f0;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+/* Modals */
+.rc-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(5, 8, 15, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1rem;
+}
+
+.rc-modal-content {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 760px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+  position: relative;
+}
+
+/* Form Inputs */
+.rc-input {
+  background: #0b1120;
+  border: 1px solid #334155;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  transition: var(--rc-transition-smooth);
+}
+
+.rc-input:focus {
+  background: #0f172a;
+  border-color: var(--rc-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+  color: #ffffff;
+}
+
+.rc-input::placeholder {
+  color: #64748b;
+}
+
+/* Quote Calculator */
+.rc-option-card {
+  border: 1px solid #334155;
+  background: #0b1120;
+  border-radius: 12px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: var(--rc-transition-smooth);
+}
+
+.rc-option-card:hover {
+  background: #17233d;
+  border-color: #475569;
+}
+
+.rc-option-card.selected {
+  border-color: var(--rc-primary);
+  background: rgba(99, 102, 241, 0.15);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.25);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070b12;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
