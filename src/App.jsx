@@ -19,6 +19,15 @@ function App() {
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
+          const hasKartodromo = parsed.some(p => p.id === 'kartodromo-sabaneta');
+          if (!hasKartodromo) {
+            const kartodromo = INITIAL_PROJECTS.find(p => p.id === 'kartodromo-sabaneta');
+            if (kartodromo) {
+              const updated = [kartodromo, ...parsed];
+              localStorage.setItem('rolicode_projects', JSON.stringify(updated));
+              return updated;
+            }
+          }
           return parsed;
         }
       }

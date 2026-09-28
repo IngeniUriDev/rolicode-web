@@ -64,19 +64,19 @@ export default function AboutSection() {
           {/* Bio Column */}
           <div className="col-lg-6">
             <div className="rc-card rc-card-glow-border p-4">
-              <div className="d-flex flex-column flex-sm-row align-items-sm-center gap-4 mb-4">
-                <div className="p-3 rounded-4 bg-dark border border-secondary border-opacity-40 d-inline-flex align-items-center justify-content-center shadow-lg" style={{ minWidth: '130px', minHeight: '130px' }}>
+              <div className="d-flex flex-column flex-sm-row align-items-sm-center gap-3 mb-4">
+                <div className="p-2 rounded-4 bg-dark border border-secondary border-opacity-40 d-inline-flex align-items-center justify-content-center shadow-lg" style={{ minWidth: '90px', minHeight: '90px' }}>
                   <img
                     src={logoImg}
                     alt="RoliCode Logo"
-                    style={{ height: '120px', width: 'auto', maxWidth: '180px', objectFit: 'contain' }}
+                    style={{ height: '85px', width: 'auto', maxWidth: '140px', objectFit: 'contain' }}
                   />
                 </div>
                 <div>
                   <span className="badge bg-primary bg-opacity-20 text-info border border-primary border-opacity-30 mb-1">
                     Fundador & Lead Engineer
                   </span>
-                  <h3 className="h4 text-white fw-bold mb-1">Uriel Rojas </h3>
+                  <h3 className="h4 text-white fw-bold mb-1">Ing. Uriel Rojas </h3>
                   <span className="text-secondary small fw-medium">Desarrollo de Software Fullstack & Consultoría Cloud</span>
                 </div>
               </div>
@@ -86,7 +86,7 @@ export default function AboutSection() {
               </p>
 
               <p className="text-light mb-4" style={{ fontSize: '0.98rem' }}>
-                Mi experiencia abarca desde el diseño y despliegue de plataformas completas como el <strong>Sistema de Gestión de Citas</strong> (en producción en rolicode.com.mx), hasta la construcción de APIs empresariales y aplicaciones nativas.
+                Mi experiencia abarca desde el diseño y despliegue de plataformas completas como el <strong>Sistema de Gestión de Citas</strong>, hasta la construcción de APIs empresariales y aplicaciones nativas.
               </p>
 
               {/* Social links */}

@@ -36,6 +36,42 @@ export const INITIAL_PROJECTS = [
     }
   },
   {
+    id: 'kartodromo-sabaneta',
+    title: 'Kartódromo & Motódromo La Sabaneta',
+    subtitle: 'Plataforma Web Motorsport, Reservas y Gestión de Pista',
+    category: 'fullstack',
+    categoryLabel: 'Fullstack & Web',
+    badge: 'Motorsport 🏎️',
+    badgeType: 'danger',
+    status: 'live',
+    featured: true,
+    liveUrl: null,
+    githubUrl: 'https://github.com/urielrg',
+    summary: 'Plataforma web de alto rendimiento para karting y motociclismo deportivo con diseño Motorsport Dark Mode, reserva de tandas en línea, catálogo de paquetes y base de datos Supabase con Row Level Security (RLS).',
+    description: 'Portal integral desarrollado para el Kartódromo & Motódromo La Sabaneta. Diseñado bajo una estética Motorsport Dark Mode moderna con efectos visuales dinámicos. Incluye sistema de reservas para clientes, catálogo interactivo de paquetes y servicios de pista, integración de WhatsApp en tiempo real para atención al cliente y una arquitectura de datos en la nube sobre Supabase protegida con políticas RLS de grado empresarial.',
+    technologies: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Lucide React', 'RLS Security'],
+    metrics: [
+      { label: 'Experiencia Visual', value: 'Dark Racing Mode' },
+      { label: 'Seguridad', value: 'RLS en Supabase' },
+      { label: 'Reservas', value: 'En Tiempo Real' },
+      { label: 'Optimización', value: 'Next.js App Router' }
+    ],
+    features: [
+      'Diseño inmersivo Motorsport Dark Mode con animaciones y gradientes de alta velocidad',
+      'Catálogo de servicios y paquetes para karts individuales, grupos, eventos y motociclismo',
+      'Sistema de reserva de tandas y horarios con almacenamiento estructurado',
+      'Base de datos Supabase (PostgreSQL) con políticas Row Level Security (RLS) para máxima protección',
+      'Botón flotante interactivo de atención directa y confirmación vía WhatsApp',
+      'Secciones interactivas: Estado de pista, cronometraje oficial, preguntas frecuentes y ubicación'
+    ],
+    architecture: {
+      frontend: 'Next.js 15 con App Router, TypeScript, Tailwind CSS y componentes modulares con iconos Lucide.',
+      backend: 'Next.js Server Actions y APIs integradas con Supabase client para transacciones ágiles.',
+      database: 'Supabase (PostgreSQL) con tablas de servicios, perfiles, reservas y políticas RLS estrictas.',
+      deployment: 'Despliegue optimizado en la nube con soporte SSL, CDN global y caché edge.'
+    }
+  },
+  {
     id: 'api-inventario-spring',
     title: 'API Empresarial de Inventario & Stock',
     subtitle: 'Microservicio de Alto Rendimiento para Retail',
