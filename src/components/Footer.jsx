@@ -1,5 +1,5 @@
 import { FaGithub, FaEnvelope, FaHeart, FaWhatsapp } from 'react-icons/fa';
-import logoImg from '../assets/RoliCodeLogo2 (1).png';
+import logoImg from '../assets/Logo.png';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -14,7 +14,7 @@ export default function Footer() {
                 src={logoImg}
                 alt="RoliCode Logo"
                 className="rounded-2"
-                style={{ height: '34px', width: 'auto', objectFit: 'contain' }}
+                style={{ height: '56px', width: 'auto', objectFit: 'contain' }}
               />
               <span>Roli<span className="rc-brand-code">Code</span></span>
             </a>

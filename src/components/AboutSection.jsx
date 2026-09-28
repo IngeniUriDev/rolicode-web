@@ -6,7 +6,7 @@ import {
   FaGithub,
   FaEnvelope
 } from 'react-icons/fa';
-import logoImg from '../assets/RoliCodeLogo2 (1).png';
+import logoImg from '../assets/Logo.png';
 
 export default function AboutSection() {
   const steps = [
@@ -64,17 +64,20 @@ export default function AboutSection() {
           {/* Bio Column */}
           <div className="col-lg-6">
             <div className="rc-card rc-card-glow-border p-4">
-              <div className="d-flex align-items-center gap-3 mb-4">
-                <div className="p-2 rounded-3 bg-dark border border-secondary border-opacity-40 d-flex align-items-center justify-content-center shadow-sm">
+              <div className="d-flex flex-column flex-sm-row align-items-sm-center gap-4 mb-4">
+                <div className="p-3 rounded-4 bg-dark border border-secondary border-opacity-40 d-inline-flex align-items-center justify-content-center shadow-lg" style={{ minWidth: '130px', minHeight: '130px' }}>
                   <img
                     src={logoImg}
                     alt="RoliCode Logo"
-                    style={{ height: '52px', width: '52px', objectFit: 'contain' }}
+                    style={{ height: '120px', width: 'auto', maxWidth: '180px', objectFit: 'contain' }}
                   />
                 </div>
                 <div>
-                  <h3 className="h4 text-white fw-bold mb-0">Uriel Rojas (RoliCode)</h3>
-                  <span className="text-info small fw-semibold">Desarrollador de Software Fullstack & Fundador</span>
+                  <span className="badge bg-primary bg-opacity-20 text-info border border-primary border-opacity-30 mb-1">
+                    Fundador & Lead Engineer
+                  </span>
+                  <h3 className="h4 text-white fw-bold mb-1">Uriel Rojas </h3>
+                  <span className="text-secondary small fw-medium">Desarrollo de Software Fullstack & Consultoría Cloud</span>
                 </div>
               </div>
 
