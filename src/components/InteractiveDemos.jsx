@@ -7,18 +7,46 @@ import {
   FaExternalLinkAlt,
   FaClock,
   FaUserCheck,
-  FaRedo
+  FaRedo,
+  FaList,
+  FaPlus,
+  FaTrash,
+  FaCheck,
+  FaDatabase
 } from 'react-icons/fa';
 
 export default function InteractiveDemos() {
   const [activeTab, setActiveTab] = useState('citas'); // 'citas' | 'api'
 
   // --- State for Demo 1: Mini Citas Agendador ---
+  const [citasSubTab, setCitasSubTab] = useState('agendar'); // 'agendar' | 'agenda'
   const [selectedService, setSelectedService] = useState('Consultoría Técnica Inicial (45 min)');
   const [selectedTime, setSelectedTime] = useState('10:00 AM');
   const [clientName, setClientName] = useState('');
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
   const [confirmedBookingData, setConfirmedBookingData] = useState(null);
+
+  const [bookedAppointments, setBookedAppointments] = useState(() => {
+    try {
+      const saved = localStorage.getItem('rolicode_demo_citas');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch {
+      // fallback
+    }
+    return [
+      {
+        id: 'DEMO-RC-8041',
+        service: 'Consultoría Técnica Inicial (45 min)',
+        time: '10:00 AM',
+        client: 'Ing. Uriel Rojas',
+        date: 'Hoy',
+        status: 'Confirmada'
+      }
+    ];
+  });
 
   const availableHours = ['09:00 AM', '10:00 AM', '11:30 AM', '02:00 PM', '04:00 PM', '05:30 PM'];
 
@@ -29,15 +57,47 @@ export default function InteractiveDemos() {
       return;
     }
     const ticketId = 'DEMO-RC-' + Math.floor(1000 + Math.random() * 9000);
-    setConfirmedBookingData({
+    const newBooking = {
       id: ticketId,
       service: selectedService,
       time: selectedTime,
       client: clientName,
-      date: 'Próximo día hábil',
-      status: 'Confirmado en vivo'
-    });
+      date: new Date().toLocaleDateString('es-MX', { day: '2-digit', month: 'short' }),
+      status: 'Confirmada'
+    };
+    const updated = [newBooking, ...bookedAppointments];
+    setBookedAppointments(updated);
+    try {
+      localStorage.setItem('rolicode_demo_citas', JSON.stringify(updated));
+    } catch {
+      // ignore
+    }
+    setConfirmedBookingData(newBooking);
     setBookingConfirmed(true);
+  };
+
+  const handleToggleDemoStatus = (id) => {
+    const updated = bookedAppointments.map((item) =>
+      item.id === id
+        ? { ...item, status: item.status === 'Confirmada' ? 'Atendida' : 'Confirmada' }
+        : item
+    );
+    setBookedAppointments(updated);
+    try {
+      localStorage.setItem('rolicode_demo_citas', JSON.stringify(updated));
+    } catch {
+      // ignore
+    }
+  };
+
+  const handleDeleteDemoBooking = (id) => {
+    const updated = bookedAppointments.filter((item) => item.id !== id);
+    setBookedAppointments(updated);
+    try {
+      localStorage.setItem('rolicode_demo_citas', JSON.stringify(updated));
+    } catch {
+      // ignore
+    }
   };
 
   const handleResetBooking = () => {
@@ -180,126 +240,281 @@ export default function InteractiveDemos() {
                   </a>
                 </div>
 
-                {!bookingConfirmed ? (
-                  <form onSubmit={handleBookDemo}>
-                    <div className="mb-4">
-                      <label className="form-label text-white small fw-bold">
-                        1. Selecciona el Tipo de Servicio o Consulta:
-                      </label>
-                      <div className="row g-2">
-                        {[
-                          'Consultoría Técnica Inicial (45 min)',
-                          'Desarrollo de Web / SaaS a Medida',
-                          'Desarrollo de API & Backend',
-                          'Auditoría de Código y Despliegue'
-                        ].map((srv) => (
-                          <div key={srv} className="col-md-6">
-                            <div
-                              className={`rc-option-card ${
-                                selectedService === srv ? 'selected' : ''
-                              }`}
-                              onClick={() => setSelectedService(srv)}
-                            >
-                              <div className="d-flex align-items-center justify-content-between">
-                                <span className="text-white fw-medium small">{srv}</span>
-                                {selectedService === srv && (
-                                  <FaCheckCircle className="text-primary flex-shrink-0" />
-                                )}
+                {/* Sub-navegación: Agendar vs Ver Agenda */}
+                <div className="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-4 pb-3 border-bottom border-secondary border-opacity-25">
+                  <div className="d-flex gap-2">
+                    <button
+                      type="button"
+                      className={`btn btn-sm rounded-pill px-3 fw-semibold ${
+                        citasSubTab === 'agendar'
+                          ? 'btn-primary text-white shadow-sm'
+                          : 'btn-outline-secondary text-light'
+                      }`}
+                      onClick={() => {
+                        setCitasSubTab('agendar');
+                        setBookingConfirmed(false);
+                      }}
+                    >
+                      <FaPlus className="me-1" size={10} /> Agendar Turno
+                    </button>
+                    <button
+                      type="button"
+                      className={`btn btn-sm rounded-pill px-3 fw-semibold ${
+                        citasSubTab === 'agenda'
+                          ? 'btn-primary text-white shadow-sm'
+                          : 'btn-outline-secondary text-light'
+                      }`}
+                      onClick={() => setCitasSubTab('agenda')}
+                    >
+                      <FaList className="me-1" size={11} /> Ver Citas Agendadas ({bookedAppointments.length})
+                    </button>
+                  </div>
+                  <span className="badge bg-dark border border-secondary border-opacity-40 text-muted font-monospace small">
+                    Demo interactiva en vivo
+                  </span>
+                </div>
+
+                {citasSubTab === 'agendar' ? (
+                  !bookingConfirmed ? (
+                    <form onSubmit={handleBookDemo}>
+                      <div className="mb-4">
+                        <label className="form-label text-white small fw-bold">
+                          1. Selecciona el Tipo de Servicio o Consulta:
+                        </label>
+                        <div className="row g-2">
+                          {[
+                            'Consultoría Técnica Inicial (45 min)',
+                            'Desarrollo de Web / SaaS a Medida',
+                            'Desarrollo de API & Backend',
+                            'Auditoría de Código y Despliegue'
+                          ].map((srv) => (
+                            <div key={srv} className="col-md-6">
+                              <div
+                                className={`rc-option-card ${
+                                  selectedService === srv ? 'selected' : ''
+                                }`}
+                                onClick={() => setSelectedService(srv)}
+                              >
+                                <div className="d-flex align-items-center justify-content-between">
+                                  <span className="text-white fw-medium small">{srv}</span>
+                                  {selectedService === srv && (
+                                    <FaCheckCircle className="text-primary flex-shrink-0" />
+                                  )}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        ))}
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="mb-4">
+                        <label className="form-label text-white small fw-bold">
+                          2. Elige un Horario Disponible:
+                        </label>
+                        <div className="d-flex flex-wrap gap-2">
+                          {availableHours.map((hr) => (
+                            <button
+                              key={hr}
+                              type="button"
+                              className={`btn btn-sm px-3 rounded-3 font-monospace ${
+                                selectedTime === hr
+                                  ? 'btn-info text-dark fw-bold shadow'
+                                  : 'rc-btn-secondary text-white border-opacity-50'
+                              }`}
+                              onClick={() => setSelectedTime(hr)}
+                            >
+                              <FaClock className="me-1" size={11} /> {hr}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="mb-4">
+                        <label className="form-label text-white small fw-bold">
+                          3. Nombre o Empresa para la Reserva:
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control rc-input"
+                          placeholder="Ej. Ing. Uriel Rojas / Mi Empresa"
+                          value={clientName}
+                          onChange={(e) => setClientName(e.target.value)}
+                          required
+                        />
+                      </div>
+
+                      <button type="submit" className="rc-btn-primary w-100 py-3">
+                        <FaUserCheck /> Confirmar Cita de Demostración
+                      </button>
+                    </form>
+                  ) : (
+                    <div className="text-center py-4">
+                      <div className="d-inline-flex p-3 rounded-circle bg-success bg-opacity-20 text-success mb-3">
+                        <FaCheckCircle size={40} />
+                      </div>
+                      <h4 className="text-white fw-bold mb-2">¡Cita Agendada Exitosamente!</h4>
+                      <p className="text-light small mb-4">
+                        Se ha generado tu ticket de prueba y se guardó en tu agenda de demostración.
+                      </p>
+
+                      <div className="rc-inner-panel p-4 text-start font-monospace small mb-4 mx-auto border border-success border-opacity-40" style={{ maxWidth: '480px' }}>
+                        <div className="d-flex justify-content-between mb-2">
+                          <span className="text-muted">Ticket ID:</span>
+                          <span className="text-info fw-bold">{confirmedBookingData.id}</span>
+                        </div>
+                        <div className="d-flex justify-content-between mb-2">
+                          <span className="text-muted">Cliente / Empresa:</span>
+                          <span className="text-white fw-semibold">{confirmedBookingData.client}</span>
+                        </div>
+                        <div className="d-flex justify-content-between mb-2">
+                          <span className="text-muted">Servicio:</span>
+                          <span className="text-white fw-semibold">{confirmedBookingData.service}</span>
+                        </div>
+                        <div className="d-flex justify-content-between mb-2">
+                          <span className="text-muted">Horario Asignado:</span>
+                          <span className="text-warning fw-bold">{confirmedBookingData.time}</span>
+                        </div>
+                        <div className="d-flex justify-content-between pt-2 border-top border-secondary border-opacity-25">
+                          <span className="text-muted">Estado del Registro:</span>
+                          <span className="text-success fw-bold">Guardado en tu Agenda Local</span>
+                        </div>
+                      </div>
+
+                      <div className="d-flex flex-wrap gap-2 justify-content-center">
+                        <button
+                          type="button"
+                          onClick={() => setCitasSubTab('agenda')}
+                          className="btn btn-primary btn-sm py-2 px-3 fw-semibold d-flex align-items-center gap-2"
+                        >
+                          <FaList size={12} /> Ver en la Agenda ({bookedAppointments.length})
+                        </button>
+                        <button
+                          type="button"
+                          onClick={handleResetBooking}
+                          className="btn btn-outline-secondary btn-sm py-2 px-3 text-white border-opacity-50"
+                        >
+                          <FaRedo className="me-1" /> Agendar Otra Cita
+                        </button>
+                        <a
+                          href="https://citas.rolicode.com.mx"
+                          target="_blank"
+                          rel="noreferrer"
+                          className="btn btn-outline-info btn-sm py-2 px-3"
+                        >
+                          Ir al Sistema Central en Supabase ↗
+                        </a>
                       </div>
                     </div>
-
-                    <div className="mb-4">
-                      <label className="form-label text-white small fw-bold">
-                        2. Elige un Horario Disponible:
-                      </label>
-                      <div className="d-flex flex-wrap gap-2">
-                        {availableHours.map((hr) => (
-                          <button
-                            key={hr}
-                            type="button"
-                            className={`btn btn-sm px-3 rounded-3 font-monospace ${
-                              selectedTime === hr
-                                ? 'btn-info text-dark fw-bold shadow'
-                                : 'rc-btn-secondary text-white border-opacity-50'
-                            }`}
-                            onClick={() => setSelectedTime(hr)}
-                          >
-                            <FaClock className="me-1" size={11} /> {hr}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="mb-4">
-                      <label className="form-label text-white small fw-bold">
-                        3. Nombre o Empresa para la Reserva:
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control rc-input"
-                        placeholder="Ej. Uriel Rojas / Mi Empresa"
-                        value={clientName}
-                        onChange={(e) => setClientName(e.target.value)}
-                        required
-                      />
-                    </div>
-
-                    <button type="submit" className="rc-btn-primary w-100 py-3">
-                      <FaUserCheck /> Confirmar Cita de Demostración
-                    </button>
-                  </form>
+                  )
                 ) : (
-                  <div className="text-center py-4">
-                    <div className="d-inline-flex p-3 rounded-circle bg-success bg-opacity-20 text-success mb-3">
-                      <FaCheckCircle size={40} />
-                    </div>
-                    <h4 className="text-white fw-bold mb-2">¡Cita Agendada Exitosamente!</h4>
-                    <p className="text-light small mb-4">
-                      Se ha generado tu ticket de prueba en el sistema de reservas.
-                    </p>
-
-                    <div className="rc-inner-panel p-4 text-start font-monospace small mb-4 mx-auto border border-success border-opacity-40" style={{ maxWidth: '480px' }}>
-                      <div className="d-flex justify-content-between mb-2">
-                        <span className="text-muted">Ticket ID:</span>
-                        <span className="text-info fw-bold">{confirmedBookingData.id}</span>
+                  <div>
+                    <div className="d-flex align-items-center justify-content-between mb-3">
+                      <div>
+                        <h5 className="text-white fw-bold mb-0">Agenda de Citas Registradas</h5>
+                        <small className="text-muted">Listado en tiempo real de citas simuladas en este navegador</small>
                       </div>
-                      <div className="d-flex justify-content-between mb-2">
-                        <span className="text-muted">Cliente / Empresa:</span>
-                        <span className="text-white fw-semibold">{confirmedBookingData.client}</span>
-                      </div>
-                      <div className="d-flex justify-content-between mb-2">
-                        <span className="text-muted">Servicio:</span>
-                        <span className="text-white fw-semibold">{confirmedBookingData.service}</span>
-                      </div>
-                      <div className="d-flex justify-content-between mb-2">
-                        <span className="text-muted">Horario Asignado:</span>
-                        <span className="text-warning fw-bold">{confirmedBookingData.time}</span>
-                      </div>
-                      <div className="d-flex justify-content-between pt-2 border-top border-secondary border-opacity-25">
-                        <span className="text-muted">Estado del Slot:</span>
-                        <span className="text-success fw-bold">Bloqueado en Base de Datos</span>
-                      </div>
-                    </div>
-
-                    <div className="d-flex flex-wrap gap-2 justify-content-center">
                       <button
                         type="button"
-                        onClick={handleResetBooking}
-                        className="btn btn-outline-secondary btn-sm py-2 px-3 text-white border-opacity-50"
+                        onClick={() => {
+                          setCitasSubTab('agendar');
+                          setBookingConfirmed(false);
+                        }}
+                        className="rc-btn-primary py-1 px-3 small"
                       >
-                        <FaRedo className="me-1" /> Probar Otra Reserva
+                        <FaPlus className="me-1" size={10} /> Nueva Cita
                       </button>
+                    </div>
+
+                    {bookedAppointments.length === 0 ? (
+                      <div className="text-center py-5 rc-inner-panel rounded-3">
+                        <p className="text-muted mb-3">No hay citas registradas en tu agenda de demostración.</p>
+                        <button
+                          type="button"
+                          onClick={() => setCitasSubTab('agendar')}
+                          className="rc-btn-primary btn-sm py-2 px-3"
+                        >
+                          <FaPlus className="me-1" /> Agendar Cita de Muestra
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="table-responsive rc-inner-panel rounded-3 p-2 mb-3">
+                        <table className="table table-dark table-hover align-middle mb-0 small">
+                          <thead>
+                            <tr className="text-muted border-bottom border-secondary border-opacity-40">
+                              <th>Ticket ID</th>
+                              <th>Cliente / Empresa</th>
+                              <th>Servicio</th>
+                              <th>Fecha & Hora</th>
+                              <th>Estado</th>
+                              <th className="text-end">Acción</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {bookedAppointments.map((appt) => (
+                              <tr key={appt.id}>
+                                <td className="font-monospace text-info">{appt.id}</td>
+                                <td className="text-white fw-semibold">{appt.client}</td>
+                                <td className="text-light">{appt.service}</td>
+                                <td>
+                                  <span className="badge bg-dark border border-secondary border-opacity-50 text-warning">
+                                    {appt.date} • {appt.time}
+                                  </span>
+                                </td>
+                                <td>
+                                  <span
+                                    className={`badge ${
+                                      appt.status === 'Confirmada'
+                                        ? 'bg-success bg-opacity-25 text-success border border-success border-opacity-40'
+                                        : 'bg-secondary bg-opacity-25 text-light border border-secondary border-opacity-40'
+                                    }`}
+                                  >
+                                    {appt.status}
+                                  </span>
+                                </td>
+                                <td className="text-end">
+                                  <div className="d-inline-flex gap-1">
+                                    <button
+                                      type="button"
+                                      onClick={() => handleToggleDemoStatus(appt.id)}
+                                      className="btn btn-sm btn-outline-success py-1 px-2"
+                                      title={appt.status === 'Confirmada' ? 'Marcar como atendida' : 'Marcar como confirmada'}
+                                    >
+                                      <FaCheck size={11} />
+                                    </button>
+                                    <button
+                                      type="button"
+                                      onClick={() => handleDeleteDemoBooking(appt.id)}
+                                      className="btn btn-sm btn-outline-danger py-1 px-2"
+                                      title="Eliminar cita"
+                                    >
+                                      <FaTrash size={11} />
+                                    </button>
+                                  </div>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+
+                    {/* Nota informativa clara sobre dónde se guardan */}
+                    <div className="p-3 rounded-3 bg-primary bg-opacity-10 border border-primary border-opacity-30 d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3">
+                      <div>
+                        <div className="text-white small fw-bold d-flex align-items-center gap-2">
+                          <FaDatabase className="text-info" /> ¿Cómo ver las citas en la base de datos central?
+                        </div>
+                        <div className="text-light small mt-1" style={{ fontSize: '0.82rem' }}>
+                          Esta tabla muestra las citas de prueba generadas en este portafolio. Para la gestión sincronizada con Supabase PostgreSQL en la nube, visita tu app completa.
+                        </div>
+                      </div>
                       <a
                         href="https://citas.rolicode.com.mx"
                         target="_blank"
                         rel="noreferrer"
-                        className="rc-btn-primary btn-sm py-2 px-4"
+                        className="rc-btn-primary btn-sm py-2 px-3 text-nowrap"
                       >
-                        Ir al Sistema Real en Vivo ↗
+                        Abrir citas.rolicode.com.mx ↗
                       </a>
                     </div>
                   </div>
