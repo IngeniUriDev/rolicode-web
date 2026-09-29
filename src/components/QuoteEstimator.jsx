@@ -151,7 +151,7 @@ Me gustaría afinar detalles de mi proyecto.`;
       <div className="container py-4">
         {/* Section Header */}
         <div className="text-center max-w-700 mx-auto mb-5">
-          <span className="badge bg-success bg-opacity-15 text-success border border-success border-opacity-30 px-3 py-2 rounded-pill fw-semibold mb-2">
+          <span className="rc-section-badge rc-section-badge-success">
             Presupuestos Transparentes
           </span>
           <h2 className="display-5 fw-bold text-white mb-3">

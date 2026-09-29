@@ -31,7 +31,7 @@ export default function ProjectsSection({
         {/* Section Header */}
         <div className="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-5 gap-3">
           <div>
-            <span className="badge bg-info bg-opacity-15 text-info border border-info border-opacity-30 px-3 py-2 rounded-pill fw-semibold mb-2">
+            <span className="rc-section-badge rc-section-badge-info">
               Portafolio de Soluciones
             </span>
             <h2 className="display-5 fw-bold text-white mb-2">

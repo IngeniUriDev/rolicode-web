@@ -76,6 +76,147 @@ p.lead {
   color: var(--rc-text-body) !important;
 }
 
+/* High-Contrast Vibrant Text Utility Overrides for Dark Mode */
+.text-primary {
+  color: #a5b4fc !important; /* Luminous Indigo-200 */
+}
+
+.text-info {
+  color: #38bdf8 !important; /* Radiant Sky-400 */
+}
+
+.text-success {
+  color: #4ade80 !important; /* Vivid Light Green-400 */
+}
+
+.text-warning {
+  color: #facc15 !important; /* Bright Yellow-400 */
+}
+
+.text-danger {
+  color: #fb7185 !important; /* Vibrant Rose-400 */
+}
+
+/* ==========================================================================
+   High-Contrast Vibrant Badges & Status Pills
+   Solves low-contrast text blending with badge background
+   ========================================================================== */
+
+/* Universal badge styling */
+.badge {
+  font-weight: 700 !important;
+  letter-spacing: 0.025em;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Rounded pill variant */
+.badge.rounded-pill {
+  padding: 0.45rem 1rem !important;
+  border-radius: 9999px !important;
+}
+
+/* Primary / Indigo badges */
+.badge.bg-primary,
+.badge[class*="bg-primary"] {
+  background-color: rgba(99, 102, 241, 0.18) !important;
+  color: #c7d2fe !important; /* Luminous Lavender-Indigo */
+  border: 1px solid rgba(165, 180, 252, 0.45) !important;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.18);
+}
+
+/* Info / Cyan badges (e.g. "Enterprise ⚡", "Portafolio de Soluciones") */
+.badge.bg-info,
+.badge[class*="bg-info"] {
+  background-color: rgba(6, 182, 212, 0.18) !important;
+  color: #a5f3fc !important; /* Luminous Aqua-Cyan */
+  border: 1px solid rgba(103, 232, 249, 0.45) !important;
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.18);
+}
+
+/* Success / Emerald badges (e.g. "En Línea 🚀", "En Línea 🏎️") */
+.badge.bg-success,
+.badge[class*="bg-success"] {
+  background-color: rgba(16, 185, 129, 0.18) !important;
+  color: #a7f3d0 !important; /* Luminous Mint-Emerald */
+  border: 1px solid rgba(110, 231, 183, 0.5) !important;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+}
+
+/* Warning / Amber badges (e.g. "Mobile Native 📱") */
+.badge.bg-warning,
+.badge[class*="bg-warning"] {
+  background-color: rgba(245, 158, 11, 0.2) !important;
+  color: #fef08a !important; /* Vivid Light Yellow */
+  border: 1px solid rgba(253, 224, 71, 0.55) !important;
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+}
+
+/* Danger / Rose badges */
+.badge.bg-danger,
+.badge[class*="bg-danger"] {
+  background-color: rgba(244, 63, 94, 0.2) !important;
+  color: #fecdd3 !important; /* Crisp Rose-Pink */
+  border: 1px solid rgba(253, 164, 175, 0.55) !important;
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.2);
+}
+
+/* Secondary / Dark badges */
+.badge.bg-secondary,
+.badge[class*="bg-secondary"],
+.badge.bg-dark {
+  background-color: rgba(30, 41, 59, 0.85) !important;
+  color: #f8fafc !important; /* Pure White-Silver */
+  border: 1px solid rgba(148, 163, 184, 0.4) !important;
+}
+
+/* Section Header Badges - High contrast, glowing borders and elevated feel */
+.rc-section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.45rem 1.15rem;
+  border-radius: 9999px;
+  margin-bottom: 0.85rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.rc-section-badge-primary {
+  background: rgba(99, 102, 241, 0.16) !important;
+  color: #c7d2fe !important;
+  border: 1px solid rgba(165, 180, 252, 0.55) !important;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
+}
+
+.rc-section-badge-info {
+  background: rgba(6, 182, 212, 0.16) !important;
+  color: #a5f3fc !important;
+  border: 1px solid rgba(103, 232, 249, 0.55) !important;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.25);
+}
+
+.rc-section-badge-success {
+  background: rgba(16, 185, 129, 0.16) !important;
+  color: #a7f3d0 !important;
+  border: 1px solid rgba(110, 231, 183, 0.55) !important;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+}
+
+.rc-section-badge-warning {
+  background: rgba(245, 158, 11, 0.18) !important;
+  color: #fef08a !important;
+  border: 1px solid rgba(253, 224, 71, 0.55) !important;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
+}
+
 code, pre, .rc-mono {
   font-family: var(--rc-font-mono);
 }

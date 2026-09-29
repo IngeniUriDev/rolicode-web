@@ -22,7 +22,7 @@ export default function Services({ onSelectServiceForQuote }) {
       <div className="container py-4">
         {/* Section Header */}
         <div className="text-center max-w-700 mx-auto mb-5">
-          <span className="badge bg-primary bg-opacity-15 text-primary border border-primary border-opacity-30 px-3 py-2 rounded-pill fw-semibold mb-2">
+          <span className="rc-section-badge rc-section-badge-primary">
             Servicios Especializados
           </span>
           <h2 className="display-5 fw-bold text-white mb-3">

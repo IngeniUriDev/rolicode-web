@@ -49,7 +49,7 @@ export default function AboutSection() {
       <div className="container py-4">
         {/* Section Header */}
         <div className="text-center max-w-700 mx-auto mb-5">
-          <span className="badge bg-secondary bg-opacity-20 text-light border border-secondary border-opacity-40 px-3 py-2 rounded-pill fw-semibold mb-2">
+          <span className="rc-section-badge rc-section-badge-info">
             Metodología & Filosofía
           </span>
           <h2 className="display-5 fw-bold text-white mb-3">
