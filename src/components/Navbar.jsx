@@ -18,7 +18,7 @@ export default function Navbar() {
 
   return (
     <nav className={`navbar navbar-expand-lg fixed-top rc-navbar ${scrolled ? 'py-2 shadow-lg' : 'py-3'}`}>
-      <div className="container">
+      <div className="container px-3 px-md-4">
         {/* Brand */}
         <a className="rc-brand-logo" href="#inicio" onClick={closeMenu}>
           <img
@@ -32,16 +32,16 @@ export default function Navbar() {
 
         {/* Mobile Toggle Button */}
         <button
-          className="btn btn-outline-light d-lg-none border-secondary border-opacity-25 p-2"
+          className="btn btn-outline-light d-lg-none border-secondary border-opacity-50 p-2 rounded-3"
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Abrir menú"
         >
-          {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+          {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
         </button>
 
         {/* Nav Links */}
-        <div className={`collapse navbar-collapse ${isOpen ? 'show mt-3 mt-lg-0' : ''}`} id="rcNavbarContent">
+        <div className={`collapse navbar-collapse rc-navbar-collapse-container ${isOpen ? 'show' : ''}`} id="rcNavbarContent">
           <ul className="navbar-nav mx-auto align-items-lg-center gap-1 gap-lg-2">
             <li className="nav-item">
               <a className="rc-nav-link" href="#inicio" onClick={closeMenu}>Inicio</a>
@@ -53,9 +53,9 @@ export default function Navbar() {
               <a className="rc-nav-link" href="#proyectos" onClick={closeMenu}>Proyectos</a>
             </li>
             <li className="nav-item">
-              <a className="rc-nav-link text-warning" href="#demos" onClick={closeMenu}>
-                <span className="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 me-1">Demos</span>
-                En Vivo
+              <a className="rc-nav-link d-inline-flex align-items-center gap-2 text-warning" href="#demos" onClick={closeMenu}>
+                <span className="badge bg-warning text-dark fw-bold px-2 py-1" style={{ fontSize: '0.78rem' }}>Demos</span>
+                <span>En Vivo</span>
               </a>
             </li>
             <li className="nav-item">
@@ -73,9 +73,10 @@ export default function Navbar() {
             <a
               href="#cotizador"
               className="rc-btn-primary w-100 w-lg-auto"
+              style={{ fontSize: '1rem', fontWeight: '700' }}
               onClick={closeMenu}
             >
-              <FaRocket size={14} /> Cotizar Proyecto
+              <FaRocket size={15} /> Cotizar Proyecto
             </a>
           </div>
         </div>

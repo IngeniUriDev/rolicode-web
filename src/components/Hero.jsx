@@ -85,22 +85,15 @@ export default function Hero() {
           {/* Left Column: Value Proposition */}
           <div className="col-lg-7 text-center text-lg-start">
             {/* Live Engineering Status Pill */}
-            <div className="d-inline-flex mb-3">
-              <span className="rc-status-pill border border-info border-opacity-30 shadow-sm">
-                <span className="rc-pulse-dot"></span>
-                <span className="text-info fw-semibold font-monospace me-1">ROLICODE LABS:</span>
-                Ingeniería Fullstack & Despliegues Cloud Activos
-              </span>
-            </div>
 
             {/* Main Headline */}
             <h1 className="rc-hero-title mb-4">
-              Software de <span className="rc-gradient-text">Misión Crítica</span>, Plataformas Web y APIs Escalables.
+              Desarrollo de software profesional plataformas<span className="rc-gradient-text"> Web, Mobiles y APIs</span> escalables.
             </h1>
 
             {/* Subheading */}
             <p className="lead mb-4 text-light" style={{ fontSize: '1.18rem', maxWidth: '640px', lineHeight: 1.7 }}>
-              Diseñamos e implementamos arquitecturas reales en producción: desde sistemas de alta concurrencia con <strong>Supabase & PostgreSQL</strong>, hasta microservicios en <strong>Java Spring Boot 4</strong> y aplicaciones interactivas en <strong>React 19</strong>.
+              Diseñamos e implementamos arquitecturas reales en producción: desde sistemas de alta concurrencia con <strong>Supabase & PostgreSQL</strong>, hasta microservicios en <strong>Java Spring Boot</strong> y aplicaciones interactivas en <strong>React</strong>.
             </p>
 
             {/* Action Buttons */}
@@ -159,22 +152,20 @@ export default function Hero() {
                 <button
                   type="button"
                   onClick={() => setActiveTelemetryTab('systems')}
-                  className={`btn btn-sm flex-grow-1 rounded-2 py-2 fw-semibold ${
-                    activeTelemetryTab === 'systems'
-                      ? 'btn-dark text-info border border-secondary border-opacity-30'
-                      : 'text-muted border-0 bg-transparent'
-                  }`}
+                  className={`btn btn-sm flex-grow-1 rounded-2 py-2 fw-semibold ${activeTelemetryTab === 'systems'
+                    ? 'btn-dark text-info border border-secondary border-opacity-30'
+                    : 'text-muted border-0 bg-transparent'
+                    }`}
                 >
                   <FaServer className="me-1" /> Despliegues en Vivo
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveTelemetryTab('telemetry')}
-                  className={`btn btn-sm flex-grow-1 rounded-2 py-2 fw-semibold ${
-                    activeTelemetryTab === 'telemetry'
-                      ? 'btn-dark text-warning border border-secondary border-opacity-30'
-                      : 'text-muted border-0 bg-transparent'
-                  }`}
+                  className={`btn btn-sm flex-grow-1 rounded-2 py-2 fw-semibold ${activeTelemetryTab === 'telemetry'
+                    ? 'btn-dark text-warning border border-secondary border-opacity-30'
+                    : 'text-muted border-0 bg-transparent'
+                    }`}
                 >
                   <FaTerminal className="me-1" /> Arquitectura Cloud
                 </button>

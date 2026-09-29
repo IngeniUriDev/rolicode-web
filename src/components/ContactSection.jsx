@@ -40,7 +40,7 @@ export default function ContactSection() {
     `Hola Uriel,\n\nSoy ${formData.name} (${formData.email}).\nMe gustaría hablar sobre el siguiente proyecto:\n\n${formData.message}`
   )}`;
 
-  const whatsappMessage = `Hola Uriel! Soy ${formData.name}. Me interesa consultar sobre: ${formData.serviceType}. Detalle: ${formData.message}`;
+  const whatsappMessage = `Hola RoliCode! Soy ${formData.name}. Me interesa consultar sobre: ${formData.serviceType}. Detalle: ${formData.message}`;
   const whatsappUrl = `https://wa.me/527141087330?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
