@@ -49,6 +49,17 @@ export default function Hero() {
       latency: '42ms'
     },
     {
+      name: 'ProfZone Directorio Regional',
+      domain: 'profzone.rolicode.com.mx',
+      url: 'https://profzone.rolicode.com.mx',
+      type: 'Directorio & Reseñas Comunitarias',
+      stack: 'React 19 + Supabase DB',
+      status: 'ONLINE',
+      statusColor: 'text-success',
+      badge: 'PRODUCCIÓN 📍',
+      latency: '31ms'
+    },
+    {
       name: 'Inventario & Logística API',
       domain: 'inventario-api (Spring Boot 4.1)',
       url: 'http://localhost:8080/swagger-ui.html',
@@ -176,7 +187,7 @@ export default function Hero() {
                 <div className="p-3 bg-black bg-opacity-50">
                   <div className="text-secondary small font-monospace mb-2 d-flex justify-content-between">
                     <span>SERVICIOS EN PRODUCCIÓN:</span>
-                    <span className="text-success">3 NODOS ACTIVOS</span>
+                    <span className="text-success">{activeSystems.length} NODOS ACTIVOS</span>
                   </div>
 
                   <div className="d-flex flex-column gap-2 mb-3">

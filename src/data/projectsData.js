@@ -72,6 +72,42 @@ export const INITIAL_PROJECTS = [
     }
   },
   {
+    id: 'profzone-regional',
+    title: 'ProfZone - Directorio Regional & Calificaciones',
+    subtitle: 'Directorio de Servicios Locales, Geolocalización y Reseñas',
+    category: 'fullstack',
+    categoryLabel: 'Fullstack & SaaS',
+    badge: 'En Línea 📍',
+    badgeType: 'success',
+    status: 'live',
+    featured: true,
+    liveUrl: 'https://profzone.rolicode.com.mx',
+    githubUrl: 'https://github.com/IngeniUriDev/profzone-web',
+    summary: 'Plataforma web comunitaria para búsqueda geolocalizada, recomendación y calificación de consultorios médicos, dentales, oficios, negocios y servicios profesionales regionales con Supabase en tiempo real.',
+    description: 'Directorio digital y motor de búsqueda interactivo desarrollado para la vinculación y recomendación confiable de prestadores de servicios y negocios locales. Cuenta con filtrado inteligente por categorías y municipios, cálculo de distancias por GPS, sistema de reseñas y puntuación comunitaria, registro y validación de comercios con panel de gestión, y una infraestructura segura en la nube con Supabase (PostgreSQL).',
+    technologies: ['React 19', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'Vite', 'Lucide React', 'Geolocalización'],
+    metrics: [
+      { label: 'Búsqueda', value: 'Geolocalizada GPS' },
+      { label: 'Base de Datos', value: 'Supabase en Vivo' },
+      { label: 'Reseñas', value: 'Comunitarias Verificadas' },
+      { label: 'Rendimiento', value: 'React 19 + Vite' }
+    ],
+    features: [
+      'Búsqueda interactiva y filtrado inteligente por categorías (médicos, dentistas, alimentos, oficios)',
+      'Detección de geolocalización del usuario y ordenamiento por cercanía geográfica (GPS)',
+      'Sistema de calificaciones, recomendaciones y reseñas comunitarias con cálculo de promedio',
+      'Módulo de registro y edición para propietarios de negocios con panel de administración',
+      'Base de datos en la nube Supabase (PostgreSQL) con sincronización en tiempo real',
+      'Diseño ultra responsivo con modo oscuro premium y micro-interacciones ágiles'
+    ],
+    architecture: {
+      frontend: 'React 19 con TypeScript, Tailwind CSS, Lucide Icons y arquitectura modular basada en servicios.',
+      backend: 'Supabase BaaS con autenticación, endpoints en tiempo real y servicios dedicados de negocio.',
+      database: 'PostgreSQL en Supabase con tablas relacionales para negocios, categorías, reseñas y feedback.',
+      deployment: 'Despliegue optimizado con Vite, soporte SSL y dominio oficial profzone.rolicode.com.mx.'
+    }
+  },
+  {
     id: 'api-inventario-spring',
     title: 'API Empresarial de Inventario & Stock',
     subtitle: 'Microservicio de Alto Rendimiento para Retail',
