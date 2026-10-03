@@ -17,15 +17,15 @@ export default function Navbar() {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <nav className={`navbar navbar-expand-lg fixed-top rc-navbar ${scrolled ? 'py-2 shadow-lg' : 'py-3'}`}>
-      <div className="container px-3 px-md-4">
+    <nav className={`navbar navbar-expand-lg fixed-top rc-navbar ${scrolled ? 'py-2 shadow-lg' : 'py-2 py-lg-3'}`}>
+      <div className="container-xl px-3 px-lg-4">
         {/* Brand */}
         <a className="rc-brand-logo" href="#inicio" onClick={closeMenu}>
           <img
             src={logoImg}
             alt="RoliCode Logo"
             className="rounded-2 shadow-sm"
-            style={{ height: '58px', width: 'auto', objectFit: 'contain' }}
+            style={{ height: '46px', width: 'auto', objectFit: 'contain' }}
           />
           <span>Roli<span className="rc-brand-code">Code</span></span>
         </a>
@@ -37,12 +37,12 @@ export default function Navbar() {
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Abrir menú"
         >
-          {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+          {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
         </button>
 
         {/* Nav Links */}
         <div className={`collapse navbar-collapse rc-navbar-collapse-container ${isOpen ? 'show' : ''}`} id="rcNavbarContent">
-          <ul className="navbar-nav mx-auto align-items-lg-center gap-1 gap-lg-2">
+          <ul className="navbar-nav mx-auto align-items-lg-center gap-1 gap-lg-1 gap-xl-2 my-2 my-lg-0">
             <li className="nav-item">
               <a className="rc-nav-link" href="#inicio" onClick={closeMenu}>Inicio</a>
             </li>
@@ -53,11 +53,7 @@ export default function Navbar() {
               <a className="rc-nav-link" href="#proyectos" onClick={closeMenu}>Proyectos</a>
             </li>
             <li className="nav-item">
-              <a className="rc-nav-link d-inline-flex align-items-center gap-2 text-warning" href="#demos" onClick={closeMenu}>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="rc-nav-link" href="#cotizador" onClick={closeMenu}>Cotizador</a>
+              <a className="rc-nav-link" href="#demos" onClick={closeMenu}>Demos</a>
             </li>
             <li className="nav-item">
               <a className="rc-nav-link" href="#sobre-mi" onClick={closeMenu}>Sobre Mí</a>
@@ -67,14 +63,13 @@ export default function Navbar() {
             </li>
           </ul>
 
-          <div className="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+          <div className="d-flex align-items-center mt-3 mt-lg-0">
             <a
               href="#cotizador"
-              className="rc-btn-primary w-100 w-lg-auto"
-              style={{ fontSize: '1rem', fontWeight: '700' }}
+              className="rc-btn-primary rc-btn-nav w-100 w-lg-auto"
               onClick={closeMenu}
             >
-              <FaRocket size={15} /> Cotizar Proyecto
+              <FaRocket size={13} /> Cotizar Proyecto
             </a>
           </div>
         </div>
