@@ -12,36 +12,36 @@ export default function AboutSection() {
   const steps = [
     {
       num: '01',
-      title: 'Descubrimiento & Planificación',
-      desc: 'Analizamos a fondo los objetivos de tu negocio, definimos los requerimientos funcionales y trazamos la arquitectura ideal.',
+      title: 'Diagnóstico & Enfoque de Negocio',
+      desc: 'Entendemos el problema real a resolver, quién lo usará y cómo generará valor inmediato para tu negocio, servicio o comunidad.',
       icon: <FaLightbulb className="text-warning" size={20} />
     },
     {
       num: '02',
-      title: 'Diseño de Arquitectura & Prototipo',
-      desc: 'Modelamos la base de datos relacional (PostgreSQL), los contratos de las APIs REST y los componentes de la interfaz de usuario.',
+      title: 'Arquitectura Segura & Prototipado',
+      desc: 'Diseñamos bases de datos relacionales en Supabase/PostgreSQL con políticas RLS, contratos REST claros y flujos sin fricción.',
       icon: <FaCogs className="text-info" size={20} />
     },
     {
       num: '03',
-      title: 'Desarrollo Ágil & Pruebas',
-      desc: 'Construcción iterativa con entregas continuas, asegurando que puedas probar los avances en un entorno seguro antes del lanzamiento.',
+      title: 'Desarrollo Ágil & Entregas en Vivo',
+      desc: 'Construcción iterativa en React 19, TypeScript y microservicios, permitiéndote probar avances en tiempo real antes del lanzamiento.',
       icon: <FaCheckDouble className="text-success" size={20} />
     },
     {
       num: '04',
-      title: 'Despliegue & Puesta en Producción',
-      desc: 'Configuración de servidores, certificados SSL HTTPS, optimización de velocidad y soporte técnico pos-lanzamiento.',
+      title: 'Despliegue Cloud & Acompañamiento',
+      desc: 'Puesta en marcha con dominio personalizado, certificados SSL, optimización de velocidad y soporte técnico directo pos-lanzamiento.',
       icon: <FaRocket className="text-primary" size={20} />
     }
   ];
 
   const skillGauges = [
-    { name: 'Frontend (React 19, JavaScript, HTML5/CSS3, Vite)', level: '95%' },
-    { name: 'Backend & APIs (Node.js, Spring Boot Java, REST)', level: '92%' },
-    { name: 'Bases de Datos & Modelado (PostgreSQL, JPA, SQL)', level: '90%' },
-    { name: 'Desarrollo Móvil (Kotlin, Android Jetpack Compose)', level: '85%' },
-    { name: 'DevOps & Despliegues (Docker, Linux VPS, Vercel, SSL)', level: '88%' }
+    { name: 'Frontend Moderno (React 19, TypeScript, Vite, Tailwind)', level: '96%' },
+    { name: 'Bases de Datos & Cloud (Supabase, PostgreSQL, RLS, SQL)', level: '94%' },
+    { name: 'Backend & APIs (Java 21, Spring Boot, Node.js, REST)', level: '92%' },
+    { name: 'Infraestructura & Despliegues (Linux VPS, Nginx, Docker, SSL)', level: '90%' },
+    { name: 'Desarrollo Móvil Nativo (Kotlin, Android Jetpack Compose)', level: '86%' }
   ];
 
   return (
@@ -50,13 +50,13 @@ export default function AboutSection() {
         {/* Section Header */}
         <div className="text-center max-w-700 mx-auto mb-5">
           <span className="rc-section-badge rc-section-badge-info">
-            Metodología & Filosofía
+            Visión, Trayectoria & Filosofía
           </span>
           <h2 className="display-5 fw-bold text-white mb-3">
             Detrás de RoliCode
           </h2>
-          <p className="lead mx-auto" style={{ maxWidth: '680px' }}>
-            Desarrollador enfocado en entregar software funcional, limpio y preparado para escalar sin sobrecostos de mantenimiento.
+          <p className="lead mx-auto" style={{ maxWidth: '720px' }}>
+            Ingeniería de software pragmática, orientada a construir productos reales en producción que impulsan la economía local, automatizan operaciones y resuelven problemas del mundo real.
           </p>
         </div>
 
@@ -74,19 +74,23 @@ export default function AboutSection() {
                 </div>
                 <div>
                   <span className="badge bg-primary bg-opacity-20 text-info border border-primary border-opacity-30 mb-1">
-                    Fundador & Lead Engineer
+                    Fundador & Lead Software Engineer
                   </span>
-                  <h3 className="h4 text-white fw-bold mb-1">Ing. Uriel Rojas </h3>
-                  <span className="text-secondary small fw-medium">Desarrollo de Software Fullstack & Consultoría Cloud</span>
+                  <h3 className="h4 text-white fw-bold mb-1">Ing. Uriel Rojas</h3>
+                  <span className="text-secondary small fw-medium">Desarrollo Fullstack, Soluciones Cloud & Arquitectura de Software</span>
                 </div>
               </div>
 
-              <p className="text-light mb-3" style={{ fontSize: '0.98rem' }}>
-                Creo firmemente que el software no solo debe verse bien, sino también estar sólidamente construido desde sus cimientos: consultas a base de datos eficientes, gran control de concurrencia y una experiencia de usuario sin fricciones.
+              <p className="text-light mb-3" style={{ fontSize: '0.98rem', lineHeight: '1.7' }}>
+                Mi enfoque no es escribir código en el vacío ni crear prototipos que se quedan en un repositorio; mi compromiso es <strong>materializar ideas en plataformas digitales activas, funcionales y en producción</strong>.
               </p>
 
-              <p className="text-light mb-4" style={{ fontSize: '0.98rem' }}>
-                Mi experiencia abarca desde el diseño y despliegue de plataformas completas como el <strong>Sistema de Gestión de Citas</strong>, hasta la construcción de APIs empresariales y aplicaciones nativas.
+              <p className="text-light mb-3" style={{ fontSize: '0.98rem', lineHeight: '1.7' }}>
+                A través de RoliCode he desarrollado proyectos de alto impacto como <strong>ProfZone</strong> (directorio regional geolocalizado para conectar profesionistas y comercios locales), <strong>Kartódromo Sabaneta</strong> (portal integral deportivo con reservas y gestión de pista), <strong>Sistemas SaaS de Citas</strong> y microservicios empresariales de alta concurrencia.
+              </p>
+
+              <p className="text-light mb-4" style={{ fontSize: '0.98rem', lineHeight: '1.7' }}>
+                Combino la velocidad del ecosistema moderno (<span className="text-info fw-semibold">React 19, TypeScript, Supabase</span>) con la robustez del software empresarial (<span className="text-warning fw-semibold">Java 21, Spring Boot, PostgreSQL</span>), garantizando siempre seguridad de datos mediante <strong>Row Level Security (RLS)</strong>, interfaces intuitivas y despliegues con dominios propios.
               </p>
 
               {/* Social links */}
@@ -135,6 +139,30 @@ export default function AboutSection() {
                     </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Guarantees Box */}
+              <div className="mt-4 pt-3 border-top border-secondary border-opacity-20">
+                <div className="row g-2 text-center">
+                  <div className="col-4">
+                    <div className="p-2 rounded-3 bg-dark bg-opacity-60 border border-secondary border-opacity-20">
+                      <div className="text-success fw-bold font-monospace fs-5">100%</div>
+                      <small className="text-muted" style={{ fontSize: '0.72rem' }}>En Producción</small>
+                    </div>
+                  </div>
+                  <div className="col-4">
+                    <div className="p-2 rounded-3 bg-dark bg-opacity-60 border border-secondary border-opacity-20">
+                      <div className="text-info fw-bold font-monospace fs-5">RLS</div>
+                      <small className="text-muted" style={{ fontSize: '0.72rem' }}>Seguridad de Datos</small>
+                    </div>
+                  </div>
+                  <div className="col-4">
+                    <div className="p-2 rounded-3 bg-dark bg-opacity-60 border border-secondary border-opacity-20">
+                      <div className="text-warning fw-bold font-monospace fs-5">Directo</div>
+                      <small className="text-muted" style={{ fontSize: '0.72rem' }}>Trato de Ingeniero</small>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
