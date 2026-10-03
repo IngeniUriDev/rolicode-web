@@ -82,7 +82,7 @@ export default function AboutSection() {
               </div>
 
               <p className="text-light mb-3" style={{ fontSize: '0.98rem' }}>
-                Creo firmemente que el software no solo debe verse moderno, sino también estar sólidamente construido desde sus cimientos: consultas a base de datos eficientes, control estricto de concurrencia y una experiencia de usuario sin fricciones.
+                Creo firmemente que el software no solo debe verse bien, sino también estar sólidamente construido desde sus cimientos: consultas a base de datos eficientes, gran control de concurrencia y una experiencia de usuario sin fricciones.
               </p>
 
               <p className="text-light mb-4" style={{ fontSize: '0.98rem' }}>

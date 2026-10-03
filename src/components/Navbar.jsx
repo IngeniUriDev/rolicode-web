@@ -54,8 +54,6 @@ export default function Navbar() {
             </li>
             <li className="nav-item">
               <a className="rc-nav-link d-inline-flex align-items-center gap-2 text-warning" href="#demos" onClick={closeMenu}>
-                <span className="badge bg-warning text-dark fw-bold px-2 py-1" style={{ fontSize: '0.78rem' }}>Demos</span>
-                <span>En Vivo</span>
               </a>
             </li>
             <li className="nav-item">
