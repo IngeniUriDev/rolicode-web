@@ -14,7 +14,6 @@ import {
   FaTag,
   FaArrowUp,
   FaArrowDown,
-  FaExchangeAlt,
   FaTimes
 } from 'react-icons/fa';
 
@@ -125,7 +124,32 @@ export default function InventoryDemo() {
   };
 
   useEffect(() => {
-    fetchProductos();
+    let isMounted = true;
+    const initData = async () => {
+      try {
+        const res = await fetch(`${API_BASE_URL}/productos`);
+        if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+        const data = await res.json();
+        if (isMounted) {
+          setProductos(data);
+          setIsLiveConnected(true);
+        }
+      } catch (err) {
+        console.warn('Backend local no detectado o CORS error, usando datos iniciales:', err);
+        if (isMounted) {
+          setIsLiveConnected(false);
+          setProductos(FALLBACK_PRODUCTOS);
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+    initData();
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const showNotification = (text, type = 'success') => {

@@ -6,7 +6,6 @@ import {
   FaCheckCircle,
   FaExternalLinkAlt,
   FaServer,
-  FaDatabase,
   FaBolt,
   FaShieldAlt,
   FaCodeBranch

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaExternalLinkAlt, FaGithub, FaEye, FaPlus, FaUndo, FaSearch } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaGithub, FaEye, FaSearch } from 'react-icons/fa';
 
 export default function ProjectsSection({
   projects,
